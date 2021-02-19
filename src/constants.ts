@@ -1,0 +1,2 @@
+export const DEFAULT_ANIMATION_DURATION = 300;
+export const DEFAULT_SIZE = 56;
