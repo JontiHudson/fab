@@ -103,8 +103,8 @@ function getRotationalAnimation({
     onAnimationStart: () => {
       State.setState({ isAnimating: true });
     },
-    onAnimationEnd: ({ finished }: { finished: boolean }) => {
-      finished && State.setState({ isAnimating: false });
+    onAnimationEnd: (attachedProps: string[]) => {
+      attachedProps.length && State.setState({ isAnimating: false });
     },
 
     to: {
