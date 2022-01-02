@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { AnimatedView } from '@huds0n/animations';
-import { Core } from '@huds0n/core';
 import { Badge, Icon, Pressable } from '@huds0n/components';
-import { useCallback, useMemo } from '@huds0n/utilities';
+import { theme } from '@huds0n/theming/src/theme';
+import { useCallback } from '@huds0n/utilities';
 
 import { DEFAULT_ANIMATION_DURATION, DEFAULT_SIZE } from '../constants';
 import { FABState } from '../FABState';
@@ -22,20 +22,18 @@ export function MainButton(props: Types.Props & { State: FABState }) {
 
 function getIconComponent({
   positionBottom,
-  FABIconColor = Core.colors.BACKGROUND,
+  FABIconColor = theme.colors.BACKGROUND,
   FABIcon = getDefaultFABIcon(positionBottom),
 }: Types.Props) {
-  return useMemo(() => {
-    return (
-      <Icon
-        color={FABIconColor}
-        {...FABIcon}
-        containerStyle={{}}
-        badge={0}
-        badgeProps={{}}
-      />
-    );
-  }, [FABIcon]);
+  return (
+    <Icon
+      color={FABIconColor}
+      {...FABIcon}
+      containerStyle={{}}
+      badge={0}
+      badgeProps={{}}
+    />
+  );
 }
 
 function getDefaultFABIcon(positionBottom: boolean | undefined) {
@@ -48,7 +46,7 @@ function getDefaultFABIcon(positionBottom: boolean | undefined) {
 
 function MainBadge({
   animationDuration = DEFAULT_ANIMATION_DURATION,
-  FABIconColor = Core.colors.BACKGROUND,
+  FABIconColor = theme.colors.BACKGROUND,
   FABSize = DEFAULT_SIZE,
   State,
 }: Types.Props & { State: FABState }) {

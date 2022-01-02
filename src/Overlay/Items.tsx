@@ -2,8 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { AnimatedView } from '@huds0n/animations';
-import { Core } from '@huds0n/core';
 import { Icon, Pressable } from '@huds0n/components';
+import { theme } from '@huds0n/theming/src/theme';
 import { mergeObjects, useEffect, useRef } from '@huds0n/utilities';
 
 import { DEFAULT_ANIMATION_DURATION, DEFAULT_SIZE } from '../constants';
@@ -19,7 +19,9 @@ const DEFAULT_ITEM_CONTAINER = {
   height: DEFAULT_ITEM_HEIGHT,
 } as const;
 const DEFAULT_ITEM_ICON = {
-  color: Core.colors.WHITE,
+  get color() {
+    return theme.colors.BACKGROUND;
+  },
   size: DEFAULT_ITEM_ICON_SIZE * 0.75,
   containerStyle: {
     height: DEFAULT_ITEM_ICON_SIZE,
@@ -27,8 +29,10 @@ const DEFAULT_ITEM_ICON = {
   },
 } as const;
 const DEFAULT_ITEM_TEXT_STYLE = {
-  color: Core.colors.WHITE,
-  fontSize: Core.fontSizes.NOTE,
+  get color() {
+    return theme.colors.BACKGROUND;
+  },
+  fontSize: theme.fontSizes.NOTE,
 } as const;
 
 export function Items({
@@ -57,13 +61,8 @@ export function Items({
   const ActionItems = visibleActions.current
     .filter((action) => !!action)
     .map((action) => {
-      const {
-        containerStyle,
-        textStyle,
-        icon,
-        onPress,
-        title,
-      } = action as Types.Action;
+      const { containerStyle, textStyle, icon, onPress, title } =
+        action as Types.Action;
       const _containerStyle = {
         ...DEFAULT_ITEM_CONTAINER,
         ...baseAction?.containerStyle,
@@ -115,8 +114,8 @@ export function Items({
             style={StyleSheet.flatten([
               { alignItems: 'center' },
               positionBottom
-                ? { marginTop: Core.spacings.M }
-                : { marginBottom: Core.spacings.M },
+                ? { marginTop: theme.spacings.M }
+                : { marginBottom: theme.spacings.M },
               positionRight
                 ? { flexDirection: 'row' }
                 : { flexDirection: 'row-reverse' },
@@ -128,13 +127,11 @@ export function Items({
             }}
           >
             <View style={{ width: DEFAULT_ICON_MARGIN }} />
-
             <Text style={_textStyle}>{title}</Text>
 
             {icon && (
               <>
-                <View style={{ width: Core.spacings.M }} />
-
+                <View style={{ width: theme.spacings.M }} />
                 <Icon {..._icon} />
               </>
             )}

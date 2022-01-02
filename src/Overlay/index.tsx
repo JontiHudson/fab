@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { AnimationSheet, AnimatedView } from '@huds0n/animations';
-import { View } from '@huds0n/components';
-import { Core } from '@huds0n/core';
+import { useIsDarkMode } from '@huds0n/theming';
+import { theme } from '@huds0n/theming/src/theme';
 
 import { DEFAULT_SIZE } from '../constants';
 import { FABState } from '../FABState';
@@ -14,11 +14,13 @@ import { Items } from './Items';
 import { MainButton } from './MainButton';
 
 export function Overlay(props: Types.Props & { State: FABState }) {
+  useIsDarkMode();
+
   const {
     positionBottom,
     positionRight,
-    positionOffsetX = Core.spacings.L,
-    positionOffsetY = Core.spacings.L,
+    positionOffsetX = theme.spacings.L,
+    positionOffsetY = theme.spacings.L,
     FABSize = DEFAULT_SIZE,
     State,
   } = props;

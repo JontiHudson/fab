@@ -1,4 +1,3 @@
-import { AnimatorStyle } from '@huds0n/animations';
 import { SharedState } from '@huds0n/shared-state';
 
 import * as Types from './types';
