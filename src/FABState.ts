@@ -1,6 +1,6 @@
-import { SharedState } from '@huds0n/shared-state';
+import { SharedState } from "@huds0n/shared-state";
 
-import * as Types from './types';
+import type { Types } from "./types";
 
 export class FABState extends SharedState<Types.State> {
   _id: symbol;
@@ -16,7 +16,7 @@ export class FABState extends SharedState<Types.State> {
       onFABPress: null,
     });
 
-    this._id = Symbol('FABState ID');
+    this._id = Symbol("FABState ID");
 
     this.openFAB = this.openFAB.bind(this);
     this.closeFAB = this.closeFAB.bind(this);
@@ -59,7 +59,7 @@ export class FABState extends SharedState<Types.State> {
 
   setFABActions(
     actions: (Types.Action | false)[],
-    onFABPress: null | (() => void) = null,
+    onFABPress: null | (() => void) = null
   ) {
     this.setState({ actions, isHidden: !actions.length, onFABPress });
   }

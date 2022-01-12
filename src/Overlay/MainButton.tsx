@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { AnimatedView } from '@huds0n/animations';
-import { Badge, Icon, Pressable } from '@huds0n/components';
-import { theme } from '@huds0n/theming/src/theme';
-import { useCallback } from '@huds0n/utilities';
+import { AnimatedView } from "@huds0n/animations";
+import { Badge, Icon, Pressable } from "@huds0n/components";
+import { theme } from "@huds0n/theming/src/theme";
+import { useCallback } from "@huds0n/utilities";
 
-import { DEFAULT_ANIMATION_DURATION, DEFAULT_SIZE } from '../constants';
-import { FABState } from '../FABState';
-import * as Types from '../types';
+import { DEFAULT_ANIMATION_DURATION, DEFAULT_SIZE } from "../constants";
+import { FABState } from "../FABState";
+import type { Types } from "../types";
 
 export function MainButton(props: Types.Props & { State: FABState }) {
   return (
@@ -38,8 +38,8 @@ function getIconComponent({
 
 function getDefaultFABIcon(positionBottom: boolean | undefined) {
   return {
-    name: positionBottom ? 'chevron-up' : 'chevron-down',
-    set: 'MaterialCommunityIcons',
+    name: positionBottom ? "chevron-up" : "chevron-down",
+    set: "MaterialCommunityIcons",
     size: DEFAULT_SIZE,
   } as const;
 }
@@ -50,14 +50,14 @@ function MainBadge({
   FABSize = DEFAULT_SIZE,
   State,
 }: Types.Props & { State: FABState }) {
-  const [{ actions, isOpen }] = State.useState(['actions', 'isOpen']);
+  const [{ actions, isOpen }] = State.useState(["actions", "isOpen"]);
 
   if (true) {
     const value = actions
       .filter((action) => !!action)
       .reduce(
         (acc, current) => acc + ((current as Types.Action).icon?.badge || 0),
-        0,
+        0
       );
 
     return (
@@ -68,9 +68,9 @@ function MainBadge({
           delay: isOpen ? 0 : animationDuration / 2,
         }}
         style={{
-          position: 'absolute',
-          height: '100%',
-          width: '100%',
+          position: "absolute",
+          height: "100%",
+          width: "100%",
         }}
         useNativeDriver
       >
@@ -92,7 +92,7 @@ function getRotationalAnimation({
   rotateOnOpen = true,
   State,
 }: Types.Props & { State: FABState }) {
-  const [isOpen] = State.useProp('isOpen');
+  const [isOpen] = State.useProp("isOpen");
 
   const openClockwise =
     (positionBottom && !positionRight) || (!positionBottom && positionRight);
@@ -110,10 +110,10 @@ function getRotationalAnimation({
         {
           rotate:
             !isOpen || !rotateOnOpen
-              ? '0deg'
+              ? "0deg"
               : openClockwise
-              ? '180deg'
-              : '-180deg',
+              ? "180deg"
+              : "-180deg",
         },
       ],
     },
@@ -122,7 +122,7 @@ function getRotationalAnimation({
 }
 
 function handleOnPress({ State }: { State: FABState }) {
-  const [{ onFABPress }] = State.useState('onFABPress');
+  const [{ onFABPress }] = State.useState("onFABPress");
 
   return useCallback(() => {
     State.toggleFAB();

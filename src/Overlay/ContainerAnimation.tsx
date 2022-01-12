@@ -1,14 +1,14 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
+import React from "react";
+import { StyleSheet } from "react-native";
 
-import { AnimatedView } from '@huds0n/animations';
-import { LayoutView } from '@huds0n/components';
-import { theme } from '@huds0n/theming/src/theme';
-import { addColorTransparency } from '@huds0n/utilities';
+import { AnimatedView } from "@huds0n/animations";
+import { LayoutView } from "@huds0n/components";
+import { theme } from "@huds0n/theming/src/theme";
+import { addColorTransparency } from "@huds0n/utilities";
 
-import { DEFAULT_ANIMATION_DURATION, DEFAULT_SIZE } from '../constants';
-import { FABState } from '../FABState';
-import * as Types from '../types';
+import { DEFAULT_ANIMATION_DURATION, DEFAULT_SIZE } from "../constants";
+import { FABState } from "../FABState";
+import type { Types } from "../types";
 
 export function ContainerAnimation({
   animationDuration = DEFAULT_ANIMATION_DURATION,
@@ -19,15 +19,15 @@ export function ContainerAnimation({
   drawerColor = theme.colors.SECONDARY,
   State,
 }: Types.Props & { State: FABState }) {
-  const [isOpen] = State.useProp('isOpen');
+  const [isOpen] = State.useProp("isOpen");
 
   const largerRadius = positionBottom
     ? positionRight
-      ? 'borderBottomLeftRadius'
-      : 'borderBottomRightRadius'
+      ? "borderBottomLeftRadius"
+      : "borderBottomRightRadius"
     : positionRight
-    ? 'borderTopLeftRadius'
-    : 'borderTopRightRadius';
+    ? "borderTopLeftRadius"
+    : "borderTopRightRadius";
 
   return (
     <LayoutView style={StyleSheet.absoluteFill}>
@@ -64,7 +64,7 @@ export function ContainerAnimation({
           ]}
           style={StyleSheet.flatten([
             {
-              position: 'absolute',
+              position: "absolute",
               borderRadius: FABSize / 2,
               [largerRadius]: FABSize / 2,
               height: FABSize,

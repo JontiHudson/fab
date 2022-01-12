@@ -1,17 +1,17 @@
-import React from 'react';
-import { View } from 'react-native';
+import React from "react";
+import { View } from "react-native";
 
-import { Children } from './Children';
-import { DEFAULT_SIZE } from './constants';
-import { FABState } from './FABState';
-import { Overlay } from './Overlay';
+import { Children } from "./Children";
+import { DEFAULT_SIZE } from "./constants";
+import { FABState } from "./FABState";
+import { Overlay } from "./Overlay";
 
-import * as FABTypes from './types';
+import { Types } from "./types";
 
 export function createFAB() {
   const State = new FABState();
 
-  return class FAB extends React.Component<FABTypes.Props> {
+  return class FAB extends React.Component<Types.Props> {
     static close = State.closeFAB;
     static closeAllFABs = State.closeAllFABs;
     static closeOtherFABs = State.closeOtherFABs;
@@ -34,4 +34,4 @@ export function createFAB() {
 
 export const FAB = createFAB();
 
-export { FABTypes };
+export type { Types as FABTypes };

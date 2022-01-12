@@ -1,21 +1,21 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
-import { AnimatedView } from '@huds0n/animations';
-import { Icon, Pressable } from '@huds0n/components';
-import { theme } from '@huds0n/theming/src/theme';
-import { mergeObjects, useEffect, useRef } from '@huds0n/utilities';
+import { AnimatedView } from "@huds0n/animations";
+import { Icon, Pressable } from "@huds0n/components";
+import { theme } from "@huds0n/theming/src/theme";
+import { mergeObjects, useEffect, useRef } from "@huds0n/utilities";
 
-import { DEFAULT_ANIMATION_DURATION, DEFAULT_SIZE } from '../constants';
-import { FABState } from '../FABState';
-import * as Types from '../types';
+import { DEFAULT_ANIMATION_DURATION, DEFAULT_SIZE } from "../constants";
+import { FABState } from "../FABState";
+import type { Types } from "../types";
 
 const DEFAULT_ICON_MARGIN = 10;
 const DEFAULT_ITEM_HEIGHT = DEFAULT_SIZE - DEFAULT_ICON_MARGIN;
 const DEFAULT_ITEM_ICON_SIZE = DEFAULT_SIZE - 2 * DEFAULT_ICON_MARGIN;
 
 const DEFAULT_ITEM_CONTAINER = {
-  alignItems: 'center',
+  alignItems: "center",
   height: DEFAULT_ITEM_HEIGHT,
 } as const;
 const DEFAULT_ITEM_ICON = {
@@ -43,9 +43,9 @@ export function Items({
   State,
 }: Types.Props & { State: FABState }) {
   const [{ actions, isAnimating, isOpen }] = State.useState([
-    'actions',
-    'isOpen',
-    'isAnimating',
+    "actions",
+    "isOpen",
+    "isAnimating",
   ]);
 
   const visibleActions = useRef<(Types.Action | false)[]>([]);
@@ -77,7 +77,7 @@ export function Items({
 
       const _icon = mergeObjects(
         mergeObjects(DEFAULT_ITEM_ICON, baseAction?.icon),
-        icon,
+        icon
       );
 
       offset += _containerStyle.height as number;
@@ -104,7 +104,7 @@ export function Items({
               },
             ],
           }}
-          pointerEvents={isOpen ? 'auto' : 'none'}
+          pointerEvents={isOpen ? "auto" : "none"}
           key={title}
           useNativeDriver
         >
@@ -112,13 +112,13 @@ export function Items({
             disabled={!onPress}
             feedback="fade"
             style={StyleSheet.flatten([
-              { alignItems: 'center' },
+              { alignItems: "center" },
               positionBottom
                 ? { marginTop: theme.spacings.M }
                 : { marginBottom: theme.spacings.M },
               positionRight
-                ? { flexDirection: 'row' }
-                : { flexDirection: 'row-reverse' },
+                ? { flexDirection: "row" }
+                : { flexDirection: "row-reverse" },
               _containerStyle,
             ])}
             onPress={() => {

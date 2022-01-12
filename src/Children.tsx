@@ -1,10 +1,10 @@
-import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import React from "react";
+import { StyleSheet, View } from "react-native";
 
-import { useCallback } from '@huds0n/utilities';
+import { useCallback } from "@huds0n/utilities";
 
-import { FABState } from './FABState';
-import * as Types from './types';
+import { FABState } from "./FABState";
+import type { Types } from "./types";
 
 export function Children({
   children,
