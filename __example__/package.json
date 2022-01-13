@@ -10,9 +10,9 @@
     "publish": "node scripts/publish.js"
   },
   "dependencies": {
-    "@huds0n/fab": "1.6.0-beta53",
+    "@huds0n/fab": "1.6.0-beta54",
     "expo": "^44.0.3"
   },
   "private": true,
-  "version": "1.6.0-beta53"
+  "version": "1.6.0-beta54"
 }
