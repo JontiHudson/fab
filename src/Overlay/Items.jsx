@@ -49,9 +49,17 @@ function Items({ animationDuration = constants_1.DEFAULT_ANIMATION_DURATION, bas
         .filter((action) => !!action)
         .map((action) => {
         const { containerStyle, textStyle, icon, onPress, title } = action;
-        const _containerStyle = Object.assign(Object.assign(Object.assign({}, DEFAULT_ITEM_CONTAINER), baseAction === null || baseAction === void 0 ? void 0 : baseAction.containerStyle), containerStyle);
-        const _textStyle = Object.assign(Object.assign(Object.assign({}, DEFAULT_ITEM_TEXT_STYLE), baseAction === null || baseAction === void 0 ? void 0 : baseAction.textStyle), textStyle);
-        const _icon = (0, utilities_1.mergeObjects)((0, utilities_1.mergeObjects)(DEFAULT_ITEM_ICON, baseAction === null || baseAction === void 0 ? void 0 : baseAction.icon), icon);
+        const _containerStyle = {
+            ...DEFAULT_ITEM_CONTAINER,
+            ...baseAction?.containerStyle,
+            ...containerStyle,
+        };
+        const _textStyle = {
+            ...DEFAULT_ITEM_TEXT_STYLE,
+            ...baseAction?.textStyle,
+            ...textStyle,
+        };
+        const _icon = (0, utilities_1.mergeObjects)((0, utilities_1.mergeObjects)(DEFAULT_ITEM_ICON, baseAction?.icon), icon);
         offset += _containerStyle.height;
         return (<animations_1.AnimatedView animate={{
                 to: {
@@ -83,7 +91,7 @@ function Items({ animationDuration = constants_1.DEFAULT_ANIMATION_DURATION, bas
                 _containerStyle,
             ])} onPress={() => {
                 State.closeFAB();
-                onPress === null || onPress === void 0 ? void 0 : onPress();
+                onPress?.();
             }}>
             <react_native_1.View style={{ width: DEFAULT_ICON_MARGIN }}/>
             <react_native_1.Text style={_textStyle}>{title}</react_native_1.Text>

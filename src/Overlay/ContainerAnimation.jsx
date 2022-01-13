@@ -22,13 +22,13 @@ function ContainerAnimation({ animationDuration = constants_1.DEFAULT_ANIMATION_
       {(layout) => (<animations_1.AnimatedView animate={[
                 {
                     to: isOpen
-                        ? { height: (layout === null || layout === void 0 ? void 0 : layout.height) || 0 }
+                        ? { height: layout?.height || 0 }
                         : { height: FABSize },
                     duration: animationDuration * 0.75,
                     delay: isOpen ? animationDuration * 0.25 : 0,
                 },
                 {
-                    to: isOpen ? { width: (layout === null || layout === void 0 ? void 0 : layout.width) || 0 } : { width: FABSize },
+                    to: isOpen ? { width: layout?.width || 0 } : { width: FABSize },
                     duration: animationDuration * 0.75,
                     delay: isOpen ? 0 : animationDuration * 0.25,
                 },

@@ -32,7 +32,7 @@ function MainBadge({ animationDuration = constants_1.DEFAULT_ANIMATION_DURATION,
     if (true) {
         const value = actions
             .filter((action) => !!action)
-            .reduce((acc, current) => { var _a; return acc + (((_a = current.icon) === null || _a === void 0 ? void 0 : _a.badge) || 0); }, 0);
+            .reduce((acc, current) => acc + (current.icon?.badge || 0), 0);
         return (<animations_1.AnimatedView animate={{
                 to: { opacity: isOpen ? 0 : 1 },
                 duration: animationDuration / 2,
@@ -75,6 +75,6 @@ function handleOnPress({ State }) {
     return (0, utilities_1.useCallback)(() => {
         State.toggleFAB();
         State.closeOtherFABs();
-        onFABPress === null || onFABPress === void 0 ? void 0 : onFABPress();
+        onFABPress?.();
     }, [onFABPress]);
 }
