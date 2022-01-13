@@ -9,23 +9,25 @@ const constants_1 = require("./constants");
 const FABState_1 = require("./FABState");
 const Overlay_1 = require("./Overlay");
 function createFAB() {
+    var _a;
     const State = new FABState_1.FABState();
-    return class FAB extends react_1.default.Component {
-        static close = State.closeFAB;
-        static closeAllFABs = State.closeAllFABs;
-        static closeOtherFABs = State.closeOtherFABs;
-        static DEFAULT_SIZE = constants_1.DEFAULT_SIZE;
-        static hide = State.hideFAB;
-        static open = State.openFAB;
-        static setActions = State.setFABActions;
-        static show = State.showFAB;
-        render() {
-            return (<react_native_1.View style={{ flex: 1 }}>
+    return _a = class FAB extends react_1.default.Component {
+            render() {
+                return (<react_native_1.View style={{ flex: 1 }}>
           <Children_1.Children {...this.props} State={State}/>
           <Overlay_1.Overlay {...this.props} State={State}/>
         </react_native_1.View>);
-        }
-    };
+            }
+        },
+        _a.close = State.closeFAB,
+        _a.closeAllFABs = State.closeAllFABs,
+        _a.closeOtherFABs = State.closeOtherFABs,
+        _a.DEFAULT_SIZE = constants_1.DEFAULT_SIZE,
+        _a.hide = State.hideFAB,
+        _a.open = State.openFAB,
+        _a.setActions = State.setFABActions,
+        _a.show = State.showFAB,
+        _a;
 }
 exports.createFAB = createFAB;
 exports.FAB = createFAB();
